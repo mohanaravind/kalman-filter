@@ -75,6 +75,16 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
       vy = 0;
     }
 
+    if (fabs(px) < 0.0001) {
+      px = 0.01;
+      cout << "init px too small" << endl;
+    }
+
+    if (fabs(py) < 0.0001) {
+      py = 0.01;
+      cout << "init py too small" << endl;
+    }
+
     // set the state with the initial location and zero velocity
     ekf_.x_ << px, py, vx, vy;
     
@@ -151,6 +161,6 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
   }
 
   // print the output
-  cout << "x_ = " << ekf_.x_ << endl;
-  cout << "P_ = " << ekf_.P_ << endl;
+  //cout << "x_ = " << ekf_.x_ << endl;
+  //cout << "P_ = " << ekf_.P_ << endl;
 }

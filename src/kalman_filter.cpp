@@ -45,13 +45,23 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
 
   // convert the previous state to polar co-ordinate
   float ro = sqrt(px * px + py * py);
-  float theta = atan(py / px);
+  float theta = atan2(py, px);
   float ro_dot = (px * vx + py * vy) / ro;
+
+  // if px and py are really low then set theta and ro_dot to 0
+  if (fabs(px) < 0.0001 && fabs(py) < 0.0001) {
+    theta, ro_dot = 0;
+  }
+
   VectorXd hx = VectorXd(3);
   hx << ro, theta, ro_dot;
 
   // compute the error
   VectorXd y = z - hx;
+
+  // normalize the angle
+  // Reference: https://discussions.udacity.com/t/ekf-gets-off-track/276122/26?u=aravinde4e025b6ca72e
+  y[1] = atan2(sin(y[1]), cos(y[1]));
   
   ComputeKF(y);
 }

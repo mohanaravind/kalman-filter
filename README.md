@@ -1,5 +1,8 @@
 # Extended Kalman Filter Project
 
+![path](path.png)
+![algorithm](flow.png)
+
 ### Background
 Kalman Filter can be used to estimate the position, velocity of a moving object. The inputs to a Kalman Filter could be a noisy data that might be a representation of the object's position. 
 
@@ -41,3 +44,5 @@ Once the install for uWebSocketIO is complete, the main program can be built and
    * On windows, you may need to run: `cmake .. -G "Unix Makefiles" && make`
 4. Run it: `./ExtendedKF `
 
+## Limitations
+- It assumes a constant velocity and in reality a car might not be traveling at constant velocity
