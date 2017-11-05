@@ -1,3 +1,5 @@
+
+
 # Extended Kalman Filter Project
 
 ![path](path.png)
@@ -10,6 +12,7 @@ In this project lidar and radar measurements from a car to detect a moving objec
 
 This project involves a Simulator which can be downloaded [here](https://github.com/udacity/self-driving-car-sim/releases)
 
+[Kalman Filter Intuition](https://www.youtube.com/playlist?list=PLt_oxs6i_7LjJCvyknsoxI815AtMvpq79)
 
 Once the install for uWebSocketIO is complete, the main program can be built and run by doing the following from the project top directory.
 
